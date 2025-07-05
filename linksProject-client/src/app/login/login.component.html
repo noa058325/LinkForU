@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <label>
+      שם משתמש:
+      <input formControlName="userName" />
+    </label>
+    <label>
+      סיסמה:
+      <input type="password" formControlName="password" />
+    </label>
+    <button type="submit" [disabled]="loginForm.invalid">התחבר</button>
+    <p *ngIf="errorMsg" style="color:red">{{ errorMsg }}</p>
+  </form>
+  

@@ -1,0 +1,25 @@
+<div class="categories-grid">
+  <div 
+    *ngFor="let category of categories" 
+    class="category-card" 
+    [style.backgroundColor]="getColorForCategory(category.name)"
+    (click)="goToCategory(category.id)"
+  >
+    <div class="icon">{{ category.icon }}</div>
+    <div class="name">{{ category.name }}</div>
+
+    <ul *ngIf="category.webs?.length" class="webs-list">
+      <li *ngFor="let web of category.webs">
+        <a 
+          href="{{ web.link }}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          (click)="$event.stopPropagation()" 
+          class="web-link"
+        >
+          {{ web.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
