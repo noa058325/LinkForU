@@ -1,0 +1,31 @@
+# ----- Angular client -----
+/linksProject-client/node_modules/
+/linksProject-client/dist/
+/linksProject-client/out-tsc/
+/linksProject-client/.angular/
+/linksProject-client/*.log
+/linksProject-client/*.env
+
+# ----- .NET server -----
+/linksProject-server/**/bin/
+/linksProject-server/**/obj/
+/linksProject-server/**/Properties/launchSettings.json
+/linksProject-server/.vs/
+/linksProject-server/*.user
+/linksProject-server/*.suo
+/linksProject-server/*.userosscache
+/linksProject-server/*.sln.docstates
+/linksProject-server/.idea/
+/linksProject-server/*.vscode/
+
+# ----- General -----
+*.log
+.vscode/
+.DS_Store
+Thumbs.db
+
+# If you have Rider IDE files
+.idea/
+
+# Ignore env files (if any)
+*.env
