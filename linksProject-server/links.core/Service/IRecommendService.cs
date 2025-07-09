@@ -11,6 +11,9 @@ namespace links.Core.Services
         Task<Recommend> UpdateAsync(int id, Recommend recommend);
         Task AddAsync(Recommend recommend);
         Task DeleteRecommendAsync(int id);
+
+        Task<bool> IncrementLikeAsync(int id);
+        Task<bool> DecrementLikeAsync(int id);
     }
 
 }

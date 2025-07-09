@@ -11,5 +11,8 @@ namespace links.Core.Repositories
         Task<Recommend> UpdateAsync(int id, Recommend recommend);  // מעדכן המלצה קיימת
         Task AddAsync(Recommend recommend);  // מוסיף המלצה חדשה
         Task Delete(int id);                 // מוחק המלצה לפי מזהה
+
+        Task<bool> IncrementLikeAsync(int id);
+        Task<bool> DecrementLikeAsync(int id);
     }
 }

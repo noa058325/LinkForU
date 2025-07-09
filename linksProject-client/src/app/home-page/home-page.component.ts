@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category, Web } from '../core/models/category.model';
 import { CategoryService } from '../core/services/category.service';
-import { WebService } from '../core/services/web.service';  // ייבוא שירות האתרים
+import { WebService } from '../core/services/web.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private webService: WebService  // הזרקת שירות האתרים
+    private webService: WebService
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +32,6 @@ export class HomePageComponent implements OnInit {
         this.webService.getAllWebs().subscribe({
           next: (webs) => {
             this.allWebs = webs;
-
-            // מיון האתרים לפי קטגוריה
             this.categories.forEach(cat => {
               cat.webs = this.allWebs.filter(web => web.idCategory === cat.id);
             });
@@ -54,23 +52,6 @@ export class HomePageComponent implements OnInit {
       'בריאות': '💊'
     };
     return iconsMap[name] || '📁';
-  }
-
-  getColorForCategory(name: string): string {
-    const cleanedName = name.trim();
-    const colorMap: { [key: string]: string } = {
-        'ניוזדוס': '#C8E6C9',        
-        'אופנה': '#F8BBD0',          
-        'מכשירי חשמל': '#D1C4E9',    
-        'חינוך': '#BBDEFB',           
-        'הומסטיילינג': '#FFE0B2',    
-        'מסעדות': '#D7CCC8',          
-        'מתכונים': '#B0BEC5',         
-        'ארגונים': '#80CBC4',        
-        'קיט ונופש': '#FFF59D'        
-      };
-    
-    return colorMap[cleanedName] || '#9E9E9E';
   }
 
   goToCategory(id: number) {

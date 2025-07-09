@@ -5,6 +5,7 @@ using links.Core.Services;
 using linksproject.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using links.core.DTOs;
 
 namespace links.Controllers
 {
@@ -23,21 +24,22 @@ namespace links.Controllers
 
         // מחזיר את כל ההמלצות
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Recommend>>> Get()
+        public async Task<ActionResult<IEnumerable<RecommendDto>>> Get()
         {
             var recommends = await _recommendService.GetListAsync();
-            return Ok(recommends);
+            var recommendsDto = _mapper.Map<IEnumerable<RecommendDto>>(recommends);
+            return Ok(recommendsDto);
         }
 
-        // מחזיר המלצה לפי מזהה
         [HttpGet("{id}")]
-        public async Task<ActionResult<Recommend>> GetById(int id)
+        public async Task<ActionResult<RecommendDto>> GetById(int id)
         {
             var recommend = await _recommendService.GetByIdAsync(id);
             if (recommend == null)
                 return NotFound();
 
-            return Ok(recommend);
+            var recommendDto = _mapper.Map<RecommendDto>(recommend);
+            return Ok(recommendDto);
         }
 
         // מוסיף המלצה חדשה
@@ -70,5 +72,28 @@ namespace links.Controllers
             await _recommendService.DeleteRecommendAsync(id);
             return NoContent();
         }
+
+        // הוספת לייק
+        [HttpPost("{id}/like")]
+        public async Task<ActionResult> LikeRecommend(int id)
+        {
+            var success = await _recommendService.IncrementLikeAsync(id);
+            if (!success)
+                return NotFound();
+
+            return NoContent();
+        }
+
+        // ביטול לייק
+        [HttpPost("{id}/unlike")]
+        public async Task<ActionResult> UnlikeRecommend(int id)
+        {
+            var success = await _recommendService.DecrementLikeAsync(id);
+            if (!success)
+                return NotFound();
+
+            return NoContent();
+        }
     }
 }
+

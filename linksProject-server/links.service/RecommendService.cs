@@ -35,4 +35,14 @@ public class RecommendService : IRecommendService
     {
         await _recommendRepository.Delete(id);
     }
+
+    public async Task<bool> IncrementLikeAsync(int id)
+    {
+        return await _recommendRepository.IncrementLikeAsync(id);
+    }
+
+    public async Task<bool> DecrementLikeAsync(int id)
+    {
+        return await _recommendRepository.DecrementLikeAsync(id);
+    }
 }

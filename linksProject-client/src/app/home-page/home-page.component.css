@@ -1,54 +1,65 @@
+/* עיצוב רשת הכרטיסים */
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 20px;
+  gap: 24px;
   padding: 24px;
+  font-family: 'Assistant', sans-serif;
+  direction: rtl;
 }
 
+/* כרטיס קטגוריה */
 .category-card {
-  border-radius: 16px;
+  background: rgba(13, 71, 161, 0.9); /* כחול כהה עם שקיפות */
+  border: 2px solid gold;
+  border-radius: 20px;
   padding: 20px;
   color: white;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* ריחוף */
 .category-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* האייקון */
 .icon {
   font-size: 2.4rem;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
+/* שם הקטגוריה */
 .name {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
+/* רשימת האתרים */
 .webs-list {
-  margin-top: 10px;
   list-style-type: none;
   padding-left: 0;
-  font-size: 0.95rem;
+  margin-top: 10px;
 }
 
 .webs-list li {
-  margin: 5px 0;
+  margin: 4px 0;
 }
 
+/* לינקים */
 .web-link {
-  color: #1a73e8;
-  text-decoration: underline;
-  cursor: pointer;
+  color: gold;
   font-weight: 600;
+  text-decoration: underline;
   transition: color 0.2s ease;
 }
 
 .web-link:hover {
-  color: #1558b0;
+  color: #ffe082; /* זהב בהיר יותר */
   text-decoration: none;
 }

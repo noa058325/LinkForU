@@ -52,4 +52,28 @@ public class RecommendRepository : IRecommendRepository
             await _context.SaveChangesAsync();
         }
     }
+
+    public async Task<bool> IncrementLikeAsync(int id)
+    {
+        var recommend = await _context.Recommend.FirstOrDefaultAsync(r => r.Id == id);
+        if (recommend == null)
+            return false;
+
+        recommend.LikesCount++;
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
+    public async Task<bool> DecrementLikeAsync(int id)
+    {
+        var recommend = await _context.Recommend.FirstOrDefaultAsync(r => r.Id == id);
+        if (recommend == null)
+            return false;
+
+        if (recommend.LikesCount > 0)
+            recommend.LikesCount--;
+
+        await _context.SaveChangesAsync();
+        return true;
+    }
 }

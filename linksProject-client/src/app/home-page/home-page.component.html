@@ -1,8 +1,9 @@
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+
 <div class="categories-grid">
   <div 
-    *ngFor="let category of categories" 
-    class="category-card" 
-    [style.backgroundColor]="getColorForCategory(category.name)"
+    *ngFor="let category of categories"
+    class="category-card"
     (click)="goToCategory(category.id)"
   >
     <div class="icon">{{ category.icon }}</div>
@@ -13,7 +14,7 @@
         <a 
           href="{{ web.link }}" 
           target="_blank" 
-          rel="noopener noreferrer" 
+          rel="noopener noreferrer"
           (click)="$event.stopPropagation()" 
           class="web-link"
         >

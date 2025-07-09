@@ -1,1 +1,31 @@
-<p>navbar works!</p>
+<nav class="navbar">
+    <div class="logo">MySite</div>
+  
+    <input
+      type="text"
+      placeholder="חיפוש אתרים..."
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()"
+    />
+    <button (click)="onSearch()" title="חפש">
+      <i class="fas fa-search"></i>
+    </button>
+  
+    <div class="history-icon" (click)="openHistory()" title="היסטוריית צפיות">
+      <i class="fas fa-history"></i>
+      <span *ngIf="historyCount > 0">{{ historyCount }}</span>
+    </div>
+  
+    <div *ngIf="!isLoggedIn" class="auth-buttons">
+      <button (click)="showLogin = true">התחבר</button>
+      <button (click)="showRegister = true">הצטרף</button>
+    </div>
+  
+    <div *ngIf="isLoggedIn" class="user-info">
+      שלום, {{ userName }}!
+      <button (click)="logout()">יציאה</button>
+    </div>
+  </nav>
+  
+  <app-login *ngIf="showLogin" (close)="showLogin = false"></app-login>
+  
