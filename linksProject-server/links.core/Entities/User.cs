@@ -6,7 +6,7 @@
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public int PhoneNamber { get; set; }
+        public int PhoneNumber { get; set; }
 
         // אחד לרבים
         public List<Recommend> Recommends { get; set; } // רשימה של המלצות של המשתמש

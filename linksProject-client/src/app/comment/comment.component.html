@@ -1,0 +1,40 @@
+<div *ngIf="recommends.length" class="carousel-wrapper">
+  <button class="arrow left" (click)="prev()">←</button>
+
+  <div class="carousel-card">
+    <h3 class="username">{{ recommends[currentIndex].name }}</h3>
+    <p class="comment-text">{{ recommends[currentIndex].description }}</p>
+
+    <button class="like-button" (click)="like(recommends[currentIndex])">
+      <i
+        class="fa-heart"
+        [ngClass]="{
+          'fas filled': likedIds.includes(recommends[currentIndex].id),
+          'far': !likedIds.includes(recommends[currentIndex].id)
+        }"
+      ></i>
+      <span class="like-count">{{ recommends[currentIndex].likesCount }}</span>
+    </button>
+  </div>
+
+  <button class="arrow right" (click)="next()">→</button>
+
+  <!-- כפתור הוספת תגובה -->
+  <button class="add-comment-button" (click)="openAddModal()">הוסף תגובה</button>
+</div>
+
+<!-- מודאל להוספת תגובה -->
+<div class="modal-backdrop" *ngIf="showAddModal" (click)="closeAddModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>הוסף תגובה חדשה</h3>
+    <textarea [(ngModel)]="newDescription" placeholder="כתוב תגובה..."></textarea>
+    <div class="modal-actions">
+      <button (click)="addRecommend()">שמור</button>
+      <button (click)="closeAddModal()">ביטול</button>
+    </div>
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+</div>
+
+<!-- הודעת שגיאה כללית -->
+<p class="error-message" *ngIf="errorMessage && !showAddModal">{{ errorMessage }}</p>

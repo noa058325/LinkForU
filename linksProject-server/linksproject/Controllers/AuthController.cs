@@ -28,7 +28,8 @@ namespace linksproject.Controllers
             {
                 var claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Name, user.UserName)
+                new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.NameIdentifier, user.id.ToString())
             };
 
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetValue<string>("JWT:Key")));
@@ -41,7 +42,12 @@ namespace linksproject.Controllers
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                return Ok(new
+                {
+                    token = tokenString,
+                    UserName = user.UserName,
+                    UserId = user.id
+                });
             }
             return Unauthorized();
         }

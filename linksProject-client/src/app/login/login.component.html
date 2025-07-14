@@ -1,13 +1,31 @@
-<form [formGroup]="loginForm" (ngSubmit)="submit()">
-    <label>
-      שם משתמש:
-      <input formControlName="userName" />
-    </label>
-    <label>
-      סיסמה:
-      <input type="password" formControlName="password" />
-    </label>
-    <button type="submit" [disabled]="loginForm.invalid">התחבר</button>
-    <p *ngIf="errorMsg" style="color:red">{{ errorMsg }}</p>
-  </form>
-  
+<div class="modal-backdrop">
+  <div class="modal">
+    <h2>התחברות</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+      <input type="text" formControlName="userName" placeholder="שם משתמש" />
+      <div *ngIf="loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched" style="color:red;">
+        <small>שם משתמש הוא שדה חובה</small>
+      </div>
+
+      <input type="password" formControlName="password" placeholder="סיסמה" />
+      <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" style="color:red;">
+        <small>סיסמה היא שדה חובה</small>
+      </div>
+
+      <button type="submit">התחבר</button>
+    </form>
+
+    <p class="switch-text">
+      עוד לא מחוברים?
+      <a (click)="switchToRegister()">הצטרפו עכשיו</a>
+    </p>
+
+    <div *ngIf="errorMsg" style="color: red; margin-top: 10px;">
+      {{ errorMsg }}
+    </div>
+
+    <button class="close-button" (click)="close()">✖</button>
+  </div>
+</div>

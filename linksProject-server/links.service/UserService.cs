@@ -48,7 +48,7 @@ namespace links.Service
             {
                 existingUser.UserName = user.UserName;
                 existingUser.Email = user.Email;
-                existingUser.PhoneNamber = user.PhoneNamber;
+                existingUser.PhoneNumber = user.PhoneNumber;
 
                 return await _userRepository.UpdateAsync(id, existingUser);
             }

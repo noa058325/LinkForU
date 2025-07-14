@@ -29,7 +29,7 @@ namespace links.data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNamber = table.Column<int>(type: "int", nullable: false)
+                    PhoneNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

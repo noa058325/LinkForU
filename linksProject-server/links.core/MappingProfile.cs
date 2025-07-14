@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static links.core.DTOs.RecommendDto;
 
 
 namespace links.core
@@ -19,6 +20,8 @@ namespace links.core
         CreateMap<User, UserDto>().ReverseMap();
         CreateMap<Web, WebDto>().ReverseMap();
         CreateMap<Recommend, RecommendDto>().ReverseMap();
+        CreateMap<RecommendCreateDto, Recommend>();
+        CreateMap<RecommendUpdateDto, Recommend>();
         }
 
     }

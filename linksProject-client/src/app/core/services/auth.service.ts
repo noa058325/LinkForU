@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { LoginModel } from '../models/login.model';
 
-export interface LoginModel {
-    userName: string;
-    password: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +23,9 @@ export class AuthService {
         this.loggedIn.next(true);
       })
     );
+  }
+  register(newUser: any): Observable<any> {
+    return this.http.post('https://localhost:7091/api/users', newUser);
   }
 
   logout() {

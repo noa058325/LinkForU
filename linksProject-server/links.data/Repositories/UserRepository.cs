@@ -42,7 +42,7 @@ public class UserRepository : IUserRepository
             existingUser.UserName = user.UserName;
             existingUser.Password = user.Password;
             existingUser.Email = user.Email;
-            existingUser.PhoneNamber = user.PhoneNamber;
+            existingUser.PhoneNumber = user.PhoneNumber;
             await _context.SaveChangesAsync();
             return existingUser;
         }

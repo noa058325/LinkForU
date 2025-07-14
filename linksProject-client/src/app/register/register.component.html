@@ -1,0 +1,50 @@
+<div class="modal-backdrop">
+    <div class="modal">
+      <h2>הצטרפות</h2>
+  
+      <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <input type="text" formControlName="userName" placeholder="שם משתמש" />
+        <div *ngIf="registerForm.controls['userName'].invalid && registerForm.controls['userName'].touched" style="color:red;">
+          <small>שם משתמש הוא שדה חובה</small>
+        </div>
+  
+        <input type="password" formControlName="password" placeholder="סיסמה" />
+        <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" style="color:red;">
+          <small *ngIf="registerForm.controls['password'].errors?.['required']">סיסמה היא שדה חובה</small>
+          <small *ngIf="registerForm.controls['password'].errors?.['minlength']">הסיסמה חייבת להכיל לפחות 9 תווים</small>
+        </div>
+  
+        <input type="email" formControlName="email" placeholder="אימייל" />
+        <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" style="color:red;">
+          <small *ngIf="registerForm.controls['email'].errors?.['required']">אימייל הוא שדה חובה</small>
+          <small *ngIf="registerForm.controls['email'].errors?.['email']">נא להזין אימייל תקין</small>
+        </div>
+  
+        <input type="text" formControlName="phoneNumber" placeholder="טלפון" />
+        <div *ngIf="registerForm.controls['phoneNumber'].invalid && registerForm.controls['phoneNumber'].touched" style="color:red;">
+          <small *ngIf="registerForm.controls['phoneNumber'].errors?.['required']">טלפון הוא שדה חובה</small>
+          <small *ngIf="registerForm.controls['phoneNumber'].errors?.['pattern']">נא להזין מספר טלפון תקין (9-10 ספרות)</small>
+        </div>
+  
+        <div>
+          <label>
+            <input type="checkbox" formControlName="agreeToUpdates" />
+            תרצה שנשלח לך עידכונים ופירסומים חדשים?
+          </label>
+          <div *ngIf="registerForm.controls['agreeToUpdates'].invalid && registerForm.controls['agreeToUpdates'].touched" style="color:red;">
+            <small>עליך לאשר את קבלת העדכונים כדי להמשיך.</small>
+          </div>
+        </div>
+  
+        <button type="submit">הצטרף</button>
+      </form>
+  
+      <p class="switch-text">
+        כבר רשומים?
+        <a (click)="switchToLogin()">התחברו כאן</a>
+      </p>
+  
+      <button class="close-button" (click)="close()">✖</button>
+    </div>
+  </div>
+  

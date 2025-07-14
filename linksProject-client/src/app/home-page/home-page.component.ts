@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Category, Web } from '../core/models/category.model';
+import { Category} from '../core/models/category.model';
 import { CategoryService } from '../core/services/category.service';
 import { WebService } from '../core/services/web.service';
 import { CommonModule } from '@angular/common';
+import { Web } from '../core/models/web.model';
 
 @Component({
   selector: 'app-home-page',

@@ -1,3 +1,5 @@
+import { Web } from "./web.model";
+
 export interface Category {
     id: number;
     name: string;
@@ -6,9 +8,4 @@ export interface Category {
     webs?: Web[]; // נוסיף כאן את רשימת האתרים
   }
   
-  export interface Web {
-    id: number;
-    name: string;
-    link: string;
-    idCategory: number;
-  }
+  

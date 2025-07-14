@@ -6,6 +6,8 @@ using linksproject.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using links.core.DTOs;
+using Microsoft.AspNetCore.Authorization;
+using static links.core.DTOs.RecommendDto;
 
 namespace links.Controllers
 {
@@ -43,35 +45,67 @@ namespace links.Controllers
         }
 
         // מוסיף המלצה חדשה
+        [Authorize]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] RecommendPostModel recommendModel)
+        public async Task<ActionResult> Post([FromBody] RecommendCreateDto recommendModel)
         {
             var recommend = _mapper.Map<Recommend>(recommendModel);
+
+            // הוספת מזהה המשתמש מהטוקן
+            var userIdString = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (userIdString == null)
+                return Unauthorized();
+
+            recommend.idUser = int.Parse(userIdString);
+
             await _recommendService.AddAsync(recommend);
-            return CreatedAtAction(nameof(GetById), new { id = recommend.Id }, recommend);
+            var recommendDto = _mapper.Map<RecommendDto>(recommend);
+            return CreatedAtAction(nameof(GetById), new { id = recommend.Id }, recommendDto);
         }
-
         // מעדכן המלצה קיימת
+        [Authorize]
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] Recommend recommend)
+        public async Task<ActionResult> Put(int id, [FromBody] RecommendUpdateDto updateDto)
         {
-            if (id != recommend.Id)
-                return BadRequest();
-
-            var updated = await _recommendService.UpdateAsync(id, recommend);
-            if (updated == null)
+            var existing = await _recommendService.GetByIdAsync(id);
+            if (existing == null)
                 return NotFound();
 
+            var userIdString = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (userIdString == null || existing.idUser != int.Parse(userIdString))
+                return Forbid();
+
+            existing.Description = updateDto.Description;
+
+            await _recommendService.UpdateAsync(id, existing);
             return NoContent();
         }
 
+
         // מוחק המלצה לפי מזהה
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
+            var recommend = await _recommendService.GetByIdAsync(id);
+            if (recommend == null)
+                return NotFound();
+
+            // קבלת מזהה המשתמש מתוך הטוקן
+            var userIdString = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (userIdString == null)
+                return Unauthorized();
+
+            int userId = int.Parse(userIdString);
+
+            // בדיקה שהמשתמש הוא בעל ההמלצה
+            if (recommend.idUser != userId)
+                return Forbid();
+
             await _recommendService.DeleteRecommendAsync(id);
             return NoContent();
         }
+
 
         // הוספת לייק
         [HttpPost("{id}/like")]
