@@ -56,5 +56,15 @@ namespace links.Core.Services
             }
             return false;
         }
+        public async Task<List<Web>> GetByCategoryIdAsync(int categoryId)
+        {
+            return await _webRepository.GetByCategoryIdAsync(categoryId);
+        }
+
+        public async Task<List<Web>> SearchByNameAsync(string query)
+        {
+            return await _webRepository.SearchByNameAsync(query);
+        }
+
     }
 }

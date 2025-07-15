@@ -11,6 +11,7 @@ namespace linksproject
             CreateMap<CategoryPostModel, Category>().ReverseMap();
             CreateMap<UserPostModel, User>().ReverseMap();
             CreateMap<WebPostModel, Web>().ReverseMap();
+            CreateMap<Web, WebSummaryDto>();
         }
     }
 }

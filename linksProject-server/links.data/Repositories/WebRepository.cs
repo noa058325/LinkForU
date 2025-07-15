@@ -64,5 +64,19 @@ namespace links.Data.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<List<Web>> GetByCategoryIdAsync(int categoryId)
+        {
+            return await _context.Web
+                                 .Where(w => w.idCategory == categoryId)
+                                 .ToListAsync();
+        }
+
+        public async Task<List<Web>> SearchByNameAsync(string query)
+        {
+            return await _context.Web
+                                 .Where(w => w.name.Contains(query))
+                                 .ToListAsync();
+        }
+
     }
 }

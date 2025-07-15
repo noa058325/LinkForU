@@ -11,5 +11,7 @@ namespace links.Core.Services
         Task AddAsync(Web web);  // מוסיף אתר חדש
         Task<Web> UpdateAsync(int id, Web web);  // מעדכן את פרטי האתר
         Task<bool> Delete(int id);  // מוחק אתר ומחזיר אם הצליח
+        Task<List<Web>> GetByCategoryIdAsync(int categoryId);
+        Task<List<Web>> SearchByNameAsync(string query);
     }
 }

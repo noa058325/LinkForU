@@ -18,9 +18,10 @@ namespace links.core
                 
         CreateMap<Category,CategoryDto>().ReverseMap();
         CreateMap<User, UserDto>().ReverseMap();
-        CreateMap<Web, WebDto>().ReverseMap();
-        CreateMap<Recommend, RecommendDto>().ReverseMap();
-        CreateMap<RecommendCreateDto, Recommend>();
+            CreateMap<Web, WebDto>();
+            CreateMap<Web, WebDetailDto>();
+            CreateMap<Recommend, RecommendDto>().ReverseMap();
+            CreateMap<RecommendCreateDto, Recommend>();
         CreateMap<RecommendUpdateDto, Recommend>();
         }
 

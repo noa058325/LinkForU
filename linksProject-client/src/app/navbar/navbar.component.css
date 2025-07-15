@@ -48,3 +48,12 @@
     font-weight: bold;
   }
   
+    .logo img {
+      width: 150px; /* הגדל את הרוחב */
+      height: auto;
+      display: block;
+    
+      filter: brightness(1.2) saturate(1.5); /* מבהיר ומגביר צבעים */
+      /* או: background-color: white; border-radius: 8px; padding: 4px; */
+    }
+  

@@ -9,5 +9,8 @@
         // יחיד לרבים
         public int idCategory { get; set; }
         public Category Category { get; set; } // קשר לקטגוריה
+
+        public string? ImageUrl { get; set; }
+        public string? Coupon { get; set; }
     }
 }

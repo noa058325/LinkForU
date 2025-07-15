@@ -11,5 +11,7 @@ namespace links.Core.Repositories
         Task AddAsync(Web web); // מוסיף אתר חדש
         Task<Web> UpdateAsync(int id, Web web); // מעדכן ומחזיר את האתר
         Task Delete(int id); // מוחק אתר
+        Task<List<Web>> GetByCategoryIdAsync(int categoryId);
+        Task<List<Web>> SearchByNameAsync(string query);
     }
 }
