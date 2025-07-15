@@ -3,4 +3,5 @@ export interface Web {
     name: string;
     link: string;
     idCategory: number;
+    imageUrl?: string; 
   }

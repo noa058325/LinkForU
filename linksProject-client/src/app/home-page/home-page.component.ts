@@ -4,6 +4,8 @@ import { CategoryService } from '../core/services/category.service';
 import { WebService } from '../core/services/web.service';
 import { CommonModule } from '@angular/common';
 import { Web } from '../core/models/web.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +20,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private webService: WebService
+    private webService: WebService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +59,5 @@ export class HomePageComponent implements OnInit {
   }
 
   goToCategory(id: number) {
-    alert(`מעבר לקטגוריה ${id}`);
-  }
+    this.router.navigate(['/web-list-by-category', id])  }
 }
