@@ -2,6 +2,7 @@
   <div class="logo">
     <img src="assets/images/logo.png" alt="לוגו האתר" />
   </div>
+
   <input
     type="text"
     placeholder="חיפוש אתרים..."
@@ -12,17 +13,29 @@
     <i class="fas fa-search"></i>
   </button>
 
+  <!-- כפתור נגישות -->
+  <button 
+    class="accessibility-toggle" 
+    (click)="toggleAccessibility()" 
+    aria-label="מצב נגישות" 
+    title="הפעל/בטל מצב נגישות">
+    <i class="fa fa-universal-access"></i>
+  </button>
+
+  <!-- כפתור היסטוריה (אם תבחרי להפעיל אותו בעתיד) -->
+  <!--
   <div class="history-icon" (click)="openHistory()" title="היסטוריית צפיות">
     <i class="fas fa-history"></i>
     <span *ngIf="historyCount > 0">{{ historyCount }}</span>
   </div>
+  -->
 
   <div *ngIf="!isLoggedIn" class="auth-buttons">
     <button (click)="openLogin()">התחבר</button>
     <button (click)="openRegister()">הצטרף</button>
   </div>
 
-  <div *ngIf="isLoggedIn" class="user-info">
+  <div *ngIf="isLoggedIn" class="user-info" [appHighlight]="isAccessibilityMode">
     שלום, {{ userName }}! 👋
     <button (click)="logout()">יציאה</button>
   </div>
@@ -32,11 +45,11 @@
   *ngIf="showLogin"
   (closed)="closeModals()"
   (switchToRegisterClicked)="openRegister()"
-  (loginSuccess)="onLoginSuccess($event)"  
-></app-login>
+  (loginSuccess)="onLoginSuccess($event)">
+</app-login>
 
 <app-register
   *ngIf="showRegister"
   (closed)="showRegister = false"
-  (switchToLoginClicked)="openLogin()"
-></app-register>
+  (switchToLoginClicked)="openLogin()">
+</app-register>

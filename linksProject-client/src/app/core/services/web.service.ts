@@ -17,17 +17,17 @@ export class WebService {
   }
 
   getWebsByCategory(categoryId: number): Observable<WebDetail[]> {
-    const url = '${this.apiUrl}/category/${categoryId}';
+    const url = `${this.apiUrl}/category/${categoryId}`;
     return this.http.get<WebDetail[]>(url);
   }
 
   searchWebs(query: string): Observable<WebDetail[]> {
-    const url = '${this:apiUrl}/search?query=${encodeURIComponent(query)}';
+    const url = `${this.apiUrl}/search?query=${encodeURIComponent(query)}`;
     return this.http.get<WebDetail[]>(url);
   }
 
   getWebById(id: number): Observable<WebDetail> {
-    const url = '${this,apiUrl}/${id}';
+    const url = `${this.apiUrl}/${id}`;
     return this.http.get<WebDetail>(url);
   }
 }

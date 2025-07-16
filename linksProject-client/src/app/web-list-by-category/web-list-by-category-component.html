@@ -1,10 +1,13 @@
-<h2>אתרים בקטגוריה {{ categoryId }}</h2>
-
+<h1 class="category-title">
+{{ categoryName }}
+</h1>
 <div class="webs-container">
   <div class="web-card" *ngFor="let web of webs">
     <img [src]="web.imageUrl || defaultImageUrl" alt="תמונה" />
-    <h3>{{ web.name }}</h3>
-    <a [href]="web.link" target="_blank">מעבר לאתר</a>
-    <p *ngIf="web.coupon">קופון: <strong>{{ web.coupon }}</strong></p>
+    <div class="content">
+      <h3>{{ web.name }}</h3>
+      <a [href]="web.link" target="_blank">מעבר לאתר</a>
+      <p *ngIf="web.coupon">קופון: {{ web.coupon }}</p>
+    </div>
   </div>
 </div>

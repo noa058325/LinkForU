@@ -21,5 +21,6 @@ namespace links.core.DTOs
         public string link { get; set; }
         public string? ImageUrl { get; set; }
         public string? Coupon { get; set; }
+
     }
 }

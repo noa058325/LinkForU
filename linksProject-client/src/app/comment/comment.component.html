@@ -1,5 +1,5 @@
 <div *ngIf="recommends.length" class="carousel-wrapper">
-  <button class="arrow left" (click)="prev()">←</button>
+  <button class="arrow left" (click)="prev()" style="color: blue;font-size: larger;border-style: groove;">←</button>
 
   <div class="carousel-card">
     <h3 class="username">{{ recommends[currentIndex].name }}</h3>
@@ -17,7 +17,7 @@
     </button>
   </div>
 
-  <button class="arrow right" (click)="next()">→</button>
+  <button class="arrow right" (click)="next()" style="color: blue;font-size: larger;border-style: groove">→</button>
 
   <!-- כפתור הוספת תגובה -->
   <button class="add-comment-button" (click)="openAddModal()">הוסף תגובה</button>

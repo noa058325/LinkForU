@@ -1,59 +1,95 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background-color: #0055a5;
-    color: white;
-    padding: 12px;
-  }
-  
-  .navbar input[type="text"] {
-    flex-grow: 1;
-    padding: 6px;
-    border-radius: 4px;
-    border: none;
-    font-size: 1rem;
-  }
-  
-  button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-  
-  .history-icon {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .history-icon span {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background: red;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.75rem;
-    color: white;
-  }
-  
-  .auth-buttons button {
-    margin-left: 8px;
-  }
-  
-  .user-info {
-    margin-left: auto;
-    font-weight: bold;
-  }
-  
-    .logo img {
-      width: 150px; /* הגדל את הרוחב */
-      height: auto;
-      display: block;
-    
-      filter: brightness(1.2) saturate(1.5); /* מבהיר ומגביר צבעים */
-      /* או: background-color: white; border-radius: 8px; padding: 4px; */
-    }
-  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #0055a5;
+  color: white;
+  padding: 12px;
+}
+
+.navbar input[type="text"] {
+  flex-grow: 1;
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+}
+
+button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.history-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.history-icon span {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  color: white;
+}
+
+.auth-buttons button {
+  margin-left: 8px;
+}
+
+.user-info {
+  margin-left: auto;
+  font-weight: bold;
+}
+
+/* סגנון לוגו */
+.logo img {
+  width: 150px;
+  height: auto;
+  display: block;
+  filter: brightness(1.2) saturate(1.5);
+}
+
+/* כפתור מצב נגישות */
+.accessibility-toggle {
+  font-size: 1.4rem;
+  margin-right: 8px;
+}
+
+/* 🟡 מצב נגישות מופעל על כל הדף */
+body.accessibility-mode {
+  background-color: #000 !important;
+  color: #fff !important;
+  font-size: 1.1rem;
+}
+
+/* שינוי רקע ה-navbar במצב נגישות */
+body.accessibility-mode .navbar {
+  background-color: #222;
+}
+
+/* כפתורים במצב נגישות */
+body.accessibility-mode button {
+  color: yellow;
+}
+
+/* הדגשה למשתמש מחובר במצב נגישות */
+.user-info[appHighlight] {
+  outline: 2px dashed yellow;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.highlight-accessibility {
+  background-color: orange !important;
+  outline: 2px dashed yellow;
+  border-radius: 6px;
+  padding: 4px 8px;
+  color: black !important;
+  font-weight: bold;
+}
