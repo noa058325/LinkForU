@@ -5,6 +5,7 @@ import { CategoryService } from '../core/services/category.service';
 import { WebDetail } from '../core/models/web-detail.model';
 import { Category } from '../core/models/category.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-web-list-by-category',
@@ -22,8 +23,12 @@ export class WebListByCategoryComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private webService: WebService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router 
   ) {}
+  goHome(): void {
+    this.router.navigate(['/']);
+  }
 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');

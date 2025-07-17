@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { ViewChild } from '@angular/core';
 import { HighlightDirective } from '../directive/highlight.directive';
+import { WebDetail } from '../core/models/web-detail.model';
+import { WebService } from '../core/services/web.service';
+import { Router } from '@angular/router';
+import { AccessibilityStatusPipe } from '../pipes/accessibility-status.pipe';
+
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoginComponent, RegisterComponent,HighlightDirective],
+  imports: [CommonModule, FormsModule, LoginComponent, RegisterComponent, HighlightDirective,AccessibilityStatusPipe],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
@@ -22,8 +26,12 @@ export class NavbarComponent implements OnInit {
   userName = '';
   searchQuery = '';
   historyCount = 0;
+  isAccessible: boolean = false;
+  searchResults: WebDetail[] = [];
 
   isAccessibilityMode = false; // 🆕 מצב נגישות
+
+  constructor(private webService: WebService, private router: Router) {}
 
   ngOnInit() {
     const sessionUser = sessionStorage.getItem('userName');
@@ -34,11 +42,12 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  onSearch() {
-    if (this.searchQuery.trim()) {
-      console.log('מחפשים:', this.searchQuery);
-    }
-  }
+onSearch() {
+  const query = this.searchQuery.trim();
+  if (!query) return;
+
+  this.router.navigate(['/search'], { queryParams: { q: query } });
+}
 
   openHistory() {
     console.log('פותחים היסטוריה');

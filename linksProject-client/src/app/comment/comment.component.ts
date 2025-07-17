@@ -4,6 +4,7 @@ import { Recommend } from '../core/models/recommend.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-comment',
   standalone: true,
@@ -36,6 +37,7 @@ export class CommentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentUserId = this.getCurrentUserId();
+    console.log('CurrentUserId:', this.currentUserId);
 
     this.http.get<Recommend[]>('https://localhost:7091/api/Recommend')
       .subscribe(data => {
@@ -47,15 +49,15 @@ export class CommentComponent implements OnInit, OnDestroy {
   getCurrentUserId(): number | null {
     const token = localStorage.getItem('token');
     if (!token) return null;
-
+  
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
-      return +payload.nameid;
+      const userIdString = payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+      return userIdString ? +userIdString : null;
     } catch {
       return null;
     }
   }
-
   startCarousel() {
     this.intervalId = setInterval(() => {
       this.currentIndex = (this.currentIndex + 1) % this.recommends.length;
@@ -63,10 +65,10 @@ export class CommentComponent implements OnInit, OnDestroy {
   }
 
   like(rec: Recommend) {
-    if (!this.currentUserId) {
-      this.errorMessage = 'עליך להתחבר כדי לאהוב תגובה';
-      return;
-    }
+    // if (!this.currentUserId) {
+    //   this.errorMessage = 'עליך להתחבר כדי לאהוב תגובה';
+    //   return;
+    // }
 
     const url = `https://localhost:7091/api/Recommend/${rec.id}/${this.likedIds.includes(rec.id) ? 'unlike' : 'like'}`;
     this.http.post(url, {}).subscribe(() => {

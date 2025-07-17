@@ -1,0 +1,94 @@
+.category-title {
+    text-align: center;
+    font-size: 48px;
+    color: #0d47a1;
+    margin-top: 40px;
+    font-weight: 900;
+    font-family: 'Assistant', sans-serif;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  .webs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    direction: rtl;
+  }
+  
+  .web-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 16px;
+    cursor: pointer;
+  }
+  
+  .web-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  
+  .web-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .web-card h3 {
+    font-size: 22px;
+    margin: 16px 16px 8px;
+    color: #1a237e;
+    font-weight: 700;
+    font-family: 'Assistant', sans-serif;
+    line-height: 1.2;
+  }
+  
+  /* קישור בצורה מודגשת ונגישה */
+  .web-card a {
+    font-weight: 600;
+    font-size: 16px;
+    color: #0d47a1;
+    margin: 8px 0 12px;
+    text-decoration: none;
+    display: inline-block;
+    transition: text-decoration 0.3s ease;
+  }
+  
+  .web-card a:hover {
+    text-decoration: underline;
+  }
+  
+  .web-card p {
+    color: #2e7d32;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 16px 12px;
+  }
+  
+  /* הודעת שגיאה או ללא תוצאות */
+  .error {
+    color: #d32f2f;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  /* הדגשת מילות החיפוש בשם האתר */
+  .highlighted {
+    background-color: #ffeb3b;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 0 4px;
+  }
+  

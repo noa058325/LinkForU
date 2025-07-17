@@ -1,6 +1,14 @@
 <h1 class="category-title">
 {{ categoryName }}
 </h1>
+
+<div style="text-align: center; margin-top: 20px;">
+  <button (click)="goHome()" style="padding: 10px 20px; font-size: 16px; background-color: #0d47a1; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    ⬅️ חזרה לדף הבית
+  </button>
+</div>
+
+
 <div class="webs-container">
   <div class="web-card" *ngFor="let web of webs">
     <img [src]="web.imageUrl || defaultImageUrl" alt="תמונה" />

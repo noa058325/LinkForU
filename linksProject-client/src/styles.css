@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+/* 🟡 מצב נגישות מופעל על כל הדף */
+body.accessibility-mode {
+    background-color: #000 !important;
+    color: #fff !important;
+    font-size: 1.1rem;
+  }
+  
+  /* שינוי רקע ה-navbar במצב נגישות */
+  body.accessibility-mode .navbar {
+    background-color: #222;
+  }
+  
+  /* כפתורים במצב נגישות */
+  body.accessibility-mode button {
+    color: yellow;
+  }

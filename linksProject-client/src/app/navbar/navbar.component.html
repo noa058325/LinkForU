@@ -13,22 +13,16 @@
     <i class="fas fa-search"></i>
   </button>
 
-  <!-- כפתור נגישות -->
-  <button 
-    class="accessibility-toggle" 
-    (click)="toggleAccessibility()" 
-    aria-label="מצב נגישות" 
-    title="הפעל/בטל מצב נגישות">
+  <button
+    class="accessibility-toggle"
+    (click)="toggleAccessibility()"
+    aria-label="מצב נגישות"
+    title="הפעל/בטל מצב נגישות"
+  >
     <i class="fa fa-universal-access"></i>
   </button>
 
-  <!-- כפתור היסטוריה (אם תבחרי להפעיל אותו בעתיד) -->
-  <!--
-  <div class="history-icon" (click)="openHistory()" title="היסטוריית צפיות">
-    <i class="fas fa-history"></i>
-    <span *ngIf="historyCount > 0">{{ historyCount }}</span>
-  </div>
-  -->
+<p>מצב האתר: {{ isAccessibilityMode | accessibilityStatus }}</p>
 
   <div *ngIf="!isLoggedIn" class="auth-buttons">
     <button (click)="openLogin()">התחבר</button>
@@ -37,6 +31,7 @@
 
   <div *ngIf="isLoggedIn" class="user-info" [appHighlight]="isAccessibilityMode">
     שלום, {{ userName }}! 👋
+
     <button (click)="logout()">יציאה</button>
   </div>
 </nav>
@@ -45,11 +40,26 @@
   *ngIf="showLogin"
   (closed)="closeModals()"
   (switchToRegisterClicked)="openRegister()"
-  (loginSuccess)="onLoginSuccess($event)">
-</app-login>
+  (loginSuccess)="onLoginSuccess($event)"
+></app-login>
 
 <app-register
   *ngIf="showRegister"
   (closed)="showRegister = false"
-  (switchToLoginClicked)="openLogin()">
-</app-register>
+  (switchToLoginClicked)="openLogin()"
+></app-register>
+
+<!-- תוצאות החיפוש -->
+<div *ngIf="searchResults && searchResults.length > 0" class="results-container">  <h2>🔍 נמצאו {{ searchResults.length }} תוצאות:</h2>
+
+  <div class="cards-grid">
+    <div class="card" *ngFor="let site of searchResults">
+      <img [src]="site.imageUrl || 'assets/images/default.png'" alt="תמונה של {{ site.name }}" />
+      <h3>{{ site.name }}</h3>
+      <a [href]="site.link" target="_blank" rel="noopener noreferrer">🔗 מעבר לאתר</a>
+      <div *ngIf="site.coupon">🎁 קופון: {{ site.coupon }}</div>
+    </div>
+  </div>
+</div>
+
+

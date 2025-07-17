@@ -7,7 +7,7 @@
   padding: 12px;
 }
 
-.navbar input[type="text"] {
+.navbar input[type='text'] {
   flex-grow: 1;
   padding: 6px;
   border-radius: 4px;
@@ -21,22 +21,6 @@ button {
   color: white;
   cursor: pointer;
   font-size: 1.2rem;
-}
-
-.history-icon {
-  position: relative;
-  cursor: pointer;
-}
-
-.history-icon span {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: red;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 0.75rem;
-  color: white;
 }
 
 .auth-buttons button {
@@ -62,34 +46,73 @@ button {
   margin-right: 8px;
 }
 
-/* 🟡 מצב נגישות מופעל על כל הדף */
-body.accessibility-mode {
-  background-color: #000 !important;
-  color: #fff !important;
+
+
+ 
+.results-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+  direction: rtl;
+  text-align: right;
+  margin-top: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.card {
+  background-color: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
   font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #333;
 }
 
-/* שינוי רקע ה-navbar במצב נגישות */
-body.accessibility-mode .navbar {
-  background-color: #222;
-}
-
-/* כפתורים במצב נגישות */
-body.accessibility-mode button {
-  color: yellow;
-}
-
-/* הדגשה למשתמש מחובר במצב נגישות */
-.user-info[appHighlight] {
-  outline: 2px dashed yellow;
-  border-radius: 6px;
-  padding: 4px 8px;
-}
-.highlight-accessibility {
-  background-color: orange !important;
-  outline: 2px dashed yellow;
-  border-radius: 6px;
-  padding: 4px 8px;
-  color: black !important;
+.card a {
+  display: inline-block;
+  color: #007bff;
   font-weight: bold;
+  text-decoration: none;
+  margin-top: 6px;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: #ff4444;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.highlight-accessibility {
+  outline: 3px dotted blue;
+  border-radius: 8px;
+  padding: 6px 12px;
+  background-color: #ff9f05;
+  color: blue;
+  font-size: 30px;
 }

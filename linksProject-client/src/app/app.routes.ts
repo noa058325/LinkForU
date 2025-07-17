@@ -11,5 +11,12 @@ export const routes: Routes = [
       import('./web-list-by-category/web-list-by-category-component').then(
         m => m.WebListByCategoryComponent
       )
+  },
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('./search-results/search-results.component').then(
+        m => m.SearchResultsComponent
+      )
   }
 ];
