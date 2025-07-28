@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WebService } from '../core/services/web.service';
-import { CategoryService } from '../core/services/category.service';
-import { WebDetail } from '../core/models/web-detail.model';
-import { Category } from '../core/models/category.model';
+import { WebService } from '../../core/services/web.service';
+import { CategoryService } from '../../core/services/category.service';
+import { WebDetail } from '../../core/models/web-detail.model';
+import { Category } from '../../core/models/category.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; 
 

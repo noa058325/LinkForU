@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
-import { LoginComponent } from './login/login.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -8,14 +8,14 @@ export const routes: Routes = [
   {
     path: 'web-list-by-category/:id',
     loadComponent: () =>
-      import('./web-list-by-category/web-list-by-category-component').then(
+      import('./components/web-list-by-category/web-list-by-category-component').then(
         m => m.WebListByCategoryComponent
       )
   },
   {
     path: 'search',
     loadComponent: () =>
-      import('./search-results/search-results.component').then(
+      import('./components/search-results/search-results.component').then(
         m => m.SearchResultsComponent
       )
   }

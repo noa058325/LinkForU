@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../core/services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -29,10 +29,10 @@ export class RegisterComponent {
 
   submit() {
     this.registerForm.markAllAsTouched(); 
-    console.log('🟢 [Register] ניסיון הרשמה עם הנתונים:', this.registerForm.value);
+    console.log(' [Register] ניסיון הרשמה עם הנתונים:', this.registerForm.value);
 
     if (this.registerForm.invalid) {
-      console.log('🔴 [Register] הטופס לא תקין');
+      console.log(' [Register] הטופס לא תקין');
       return;
     }
 
@@ -45,11 +45,11 @@ export class RegisterComponent {
 
     this.authService.register(newUser).subscribe({
       next: () => {
-        console.log('✅ [Register] הרשמה הצליחה');
+        console.log(' [Register] הרשמה הצליחה');
         this.closed.emit();
       },
       error: (err) => {
-        console.error('❌ [Register] שגיאה בהרשמה:', err);
+        console.error(' [Register] שגיאה בהרשמה:', err);
         this.errorMsg = 'אירעה שגיאה ברישום. נסה שוב.';
         
       }
@@ -59,12 +59,12 @@ export class RegisterComponent {
   }
 
   close() {
-    console.log('❎ [Register] סגירת חלון הרשמה');
+    console.log(' [Register] סגירת חלון הרשמה');
     this.closed.emit();
   }
 
   switchToLogin() {
-    console.log('⬅️ [Register] מעבר לחלון התחברות');
+    console.log(' [Register] מעבר לחלון התחברות');
     this.switchToLoginClicked.emit();
   }
 }

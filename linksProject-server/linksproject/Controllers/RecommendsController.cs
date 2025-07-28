@@ -49,6 +49,10 @@ namespace links.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] RecommendCreateDto recommendModel)
         {
+            foreach (var claim in User.Claims)
+            {
+                Console.WriteLine($"CLAIM: {claim.Type} = {claim.Value}");
+            }
             var recommend = _mapper.Map<Recommend>(recommendModel);
 
             // הוספת מזהה המשתמש מהטוקן

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Recommend } from '../core/models/recommend.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Recommend } from '../../core/models/recommend.model';
 
 
 @Component({
@@ -66,7 +66,7 @@ export class CommentComponent implements OnInit, OnDestroy {
 
   like(rec: Recommend) {
     // if (!this.currentUserId) {
-    //   this.errorMessage = 'עליך להתחבר כדי לאהוב תגובה';
+    //   this.errorMessage = 'עליך להתחבר כדי להוסיף לייק לתגובה';
     //   return;
     // }
 
@@ -81,7 +81,7 @@ export class CommentComponent implements OnInit, OnDestroy {
       }
       this.errorMessage = '';
     }, () => {
-      this.errorMessage = 'אירעה שגיאה בניסיון לאהוב תגובה';
+      this.errorMessage = 'אירעה שגיאה בניסיון להוסיף לייק לתגובה';
     });
   }
 

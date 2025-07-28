@@ -3,11 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { HighlightDirective } from '../directive/highlight.directive';
-import { WebDetail } from '../core/models/web-detail.model';
-import { WebService } from '../core/services/web.service';
+import { HighlightDirective } from '../../directive/highlight.directive';
+import { WebDetail } from '../../core/models/web-detail.model';
+import { WebService } from '../../core/services/web.service';
 import { Router } from '@angular/router';
-import { AccessibilityStatusPipe } from '../pipes/accessibility-status.pipe';
+import { AccessibilityStatusPipe } from '../../pipes/accessibility-status.pipe';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   isAccessible: boolean = false;
   searchResults: WebDetail[] = [];
 
-  isAccessibilityMode = false; // 🆕 מצב נגישות
+  isAccessibilityMode = false; //  מצב נגישות
 
   constructor(private webService: WebService, private router: Router) {}
 
@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
     if (sessionUser) {
       this.userName = sessionUser;
       this.isLoggedIn = true;
-      console.log('🔄 [Navbar] משתמש משוחזר מה-sessionStorage:', sessionUser);
+      console.log(' [Navbar] משתמש משוחזר מה-sessionStorage:', sessionUser);
     }
   }
 
@@ -79,7 +79,7 @@ onSearch() {
   }
 
   openLogin() {
-    console.log('🔓 [Navbar] פתיחת חלון התחברות');
+    console.log(' [Navbar] פתיחת חלון התחברות');
     this.showLogin = true;
     this.showRegister = false;
     setTimeout(() => {
@@ -90,26 +90,26 @@ onSearch() {
   }
 
   openRegister() {
-    console.log('📝 [Navbar] פתיחת חלון הרשמה');
+    console.log('[Navbar] פתיחת חלון הרשמה');
     this.showRegister = true;
     this.showLogin = false;
   }
 
   closeModals() {
-    console.log('❌ [Navbar] סגירת כל החלונות');
+    console.log('[Navbar] סגירת כל החלונות');
     this.showLogin = false;
     this.showRegister = false;
   }
 
   onLoginSuccess(userName: string) {
-    console.log('🟩 [Navbar] התחברות הצליחה - קיבלנו שם משתמש:', userName);
+    console.log('[Navbar] התחברות הצליחה - קיבלנו שם משתמש:', userName);
     alert('ברוך הבא');
     this.userName = userName;
     this.isLoggedIn = true;
     sessionStorage.setItem('userName', userName);
     this.closeModals();
     setTimeout(() => {
-      console.log('🟢 [Navbar] אחרי סגירת מודאל, isLoggedIn:', this.isLoggedIn, 'userName:', this.userName);
+      console.log(' [Navbar] אחרי סגירת מודאל, isLoggedIn:', this.isLoggedIn, 'userName:', this.userName);
     }, 0);
   }
 

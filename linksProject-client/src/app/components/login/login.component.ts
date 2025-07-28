@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../core/services/auth.service';
-import { LoginModel } from '../core/models/login.model';
+import { AuthService } from '../../core/services/auth.service';
+import { LoginModel } from '../../core/models/login.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -47,7 +47,7 @@ export class LoginComponent {
 
     this.authService.login(loginData).subscribe({
       next: (res) => {
-        console.log('✅ [Login] התחברות הצליחה');
+        console.log('[Login] התחברות הצליחה');
 
         const token = res.token;
         const payload = JSON.parse(atob(token.split('.')[1]));
@@ -60,19 +60,19 @@ export class LoginComponent {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        console.error('❌ [Login] שגיאה בהתחברות:', err);
+        console.error(' [Login] שגיאה בהתחברות:', err);
         this.errorMsg = 'שם משתמש או סיסמה שגויים';
       }
     });
   }
 
   close() {
-    console.log('❎ [Login] סגירת חלון התחברות');
+    console.log(' [Login] סגירת חלון התחברות');
     this.closed.emit();
   }
 
   switchToRegister() {
-    console.log('➡️ [Login] מעבר לחלון הרשמה');
+    console.log(' [Login] מעבר לחלון הרשמה');
     this.switchToRegisterClicked.emit();
   }
   resetForm() {

@@ -8,8 +8,10 @@
 <!-- עם תוצאות -->
 <div class="webs-container" *ngIf="searchResults.length > 0">
   <div class="web-card" *ngFor="let web of searchResults">
-    <img [src]="web.imageUrl || defaultImageUrl" alt="תמונה של {{ web.name }}" />
-    <div class="content">
+    <img [src]="web.imageUrl ? web.imageUrl : defaultImageUrl"
+    (error)="onImageError($event)"
+    alt="תמונה של {{ web.name }}" />
+     <div class="content">
       <h3>{{ web.name }}</h3>
       <a [href]="web.link" target="_blank">מעבר לאתר</a>
       <p *ngIf="web.coupon">קופון: {{ web.coupon }}</p>

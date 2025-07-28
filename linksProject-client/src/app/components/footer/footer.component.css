@@ -1,6 +1,6 @@
 .footer {
-    background-color: #6773b0 ;
-    color: #fff;
+    background-color: #fada66 ;
+    color: #2d21ca;
     padding: 40px;
     text-align: center;
     font-family: Arial, sans-serif;
@@ -8,7 +8,7 @@
   }
   
   .footer a {
-    color: #ddd;
+    color: #1f53c2;
     margin: 0 10px;
     text-decoration: none;
   }

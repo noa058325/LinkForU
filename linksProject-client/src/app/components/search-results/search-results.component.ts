@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WebService } from '../core/services/web.service';
-import { WebDetail } from '../core/models/web-detail.model';
-import { CommonModule } from '@angular/common';  // <-- הוספה
+import { CommonModule } from '@angular/common';  
+import { WebDetail } from '../../core/models/web-detail.model';
+import { WebService } from '../../core/services/web.service';
 
 @Component({
   selector: 'app-search-results',
@@ -16,7 +16,7 @@ export class SearchResultsComponent implements OnInit {
   searchResults: WebDetail[] = [];
   loading = false;
   errorMessage = '';
-  defaultImageUrl = 'assets/default-image.png';
+  defaultImageUrl = 'assets/images/default-image.png';
   searchPerformed = false; 
   constructor(private route: ActivatedRoute, private webService: WebService) {}
 
@@ -33,7 +33,12 @@ export class SearchResultsComponent implements OnInit {
       }
     });
   }
-  
+  onImageError(event: Event) {
+    console.log('Image load error:', event);
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = this.defaultImageUrl;
+
+  }
   performSearch() {
     this.loading = true;
     this.searchPerformed = true;
@@ -47,7 +52,6 @@ export class SearchResultsComponent implements OnInit {
         if (results.length > 0) {
           this.errorMessage = '';
         } else {
-          // אם אין תוצאות, אפשר להשאיר את errorMessage ריק כי ההודעה תוצג בתבנית אחרת
         }
       },
       error: (err) => {
